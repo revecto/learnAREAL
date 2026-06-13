@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BookletCard from '../../components/BookletCard.astro';
+import Button from '../../components/Button.astro';
+import { withBase } from '../../utils/withBase.js';
+
+const booklets = [
+  { number: 1, available: true },
+  { number: 2 },
+  { number: 3 },
+  { number: 4 },
+  { number: 5 },
+  { number: 6 },
+  { number: 7 },
+  { number: 8 },
+];
+---
+
+<BaseLayout
+  title="Englisch A1"
+  description="Englisch A1 mit learnAREAL: 8 Arbeitshefte vom ersten Wort bis zum A1-Abschluss. Heft 1 ist verfügbar."
+>
+  <main class="container">
+    <h1>Englisch A1</h1>
+    <p class="lead">
+      Das Niveau A1 besteht aus 8 Arbeitsheften. Jedes Heft baut auf dem vorherigen auf.
+      Heft 1 ist verfügbar – die Hefte 2 bis 8 erscheinen demnächst.
+    </p>
+    <p>
+      <Button href={withBase('/a1/heft-1/')}>Zu Heft 1</Button>
+    </p>
+
+    <ul class="grid">
+      {booklets.map((b) => <BookletCard number={b.number} available={b.available} />)}
+    </ul>
+  </main>
+</BaseLayout>

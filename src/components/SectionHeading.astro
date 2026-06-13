@@ -1,0 +1,28 @@
+---
+// eyebrow: kleine Zeile über dem Titel (optional)
+const { eyebrow } = Astro.props;
+---
+
+<div class="section-heading">
+  {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+  <h2><slot /></h2>
+</div>
+
+<style>
+  .section-heading {
+    margin-bottom: 1rem;
+  }
+
+  .eyebrow {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--blue);
+    margin: 0 0 0.35rem;
+  }
+
+  h2 {
+    margin: 0;
+  }
+</style>

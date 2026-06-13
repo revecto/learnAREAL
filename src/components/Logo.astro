@@ -1,0 +1,21 @@
+---
+// Original-Logo (learnAREAL, horizontal) aus public/images/.
+import { withBase } from '../utils/withBase.js';
+
+const { height = 34 } = Astro.props;
+---
+
+<img
+  class="logo"
+  src={withBase('/images/logo-horizontal.png')}
+  alt="learnAREAL"
+  height={height}
+  style={`height:${height}px`}
+/>
+
+<style>
+  .logo {
+    display: block;
+    width: auto;
+  }
+</style>

@@ -1,0 +1,374 @@
+---
+import fs from 'node:fs';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import Sprachhaus from '../components/Sprachhaus.astro';
+import { withBase } from '../utils/withBase.js';
+
+// Hero-Bild: sobald «banner-startseite.jpg» in public/images/ liegt,
+// wird es automatisch verwendet (Fallback: Kartenstapel aus dem Heft).
+const bannerPath = new URL('../../public/images/banner-startseite.jpg', import.meta.url);
+const heroImage = fs.existsSync(bannerPath)
+  ? '/images/banner-startseite.jpg'
+  : '/images/kartenstapel.png';
+
+// Drive-Video «Mini-Erfolgs-Strategie» (freigegeben: Jeder mit Link)
+const videoEmbedUrl =
+  'https://drive.google.com/file/d/1XtWsldL-6sIYIy8GDANibwF5dYEojHzh/preview';
+---
+
+<BaseLayout description="learnAREAL – Englisch verstehen, statt Regeln nur auswendig zu lernen. Lernkarten, Lernposter, Lerncoach-Tipps und Zusatzmaterialien zu den learnAREAL-Arbeitsheften.">
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <h1>learnAREAL</h1>
+        <p class="claim">Englisch verstehen, statt Regeln nur auswendig zu lernen.</p>
+        <p class="lead">
+          Mit learnAREAL lernst du englische Sprachstrukturen Schritt für Schritt.
+          Kurze Erklärungen, klare Beispiele, Lernposter und Lerncoach-Tipps helfen
+          dir, Muster zu erkennen, zu verstehen und nach und nach sicherer
+          anzuwenden.
+        </p>
+        <Button href={withBase('/a1/heft-1/')}>Zu Englisch A1 · Heft 1</Button>
+      </div>
+      <img
+        class="hero-img"
+        src={withBase(heroImage)}
+        alt="learnAREAL – Englisch lernen mit Lernkarten"
+        loading="eager"
+      />
+    </div>
+  </section>
+
+  <main class="container">
+    <!-- Das System -->
+    <section class="section">
+      <SectionHeading eyebrow="Das System">So lernst du mit learnAREAL</SectionHeading>
+      <p class="lead merkzeile">Erst erkennen. Dann verstehen. Dann anwenden.</p>
+      <p class="lead">
+        learnAREAL arbeitet mit drei festen Elementen. Sie helfen dir, neue
+        Sprachstrukturen zuerst zu sehen, dann zu verstehen und Schritt für Schritt
+        sicherer anzuwenden.
+      </p>
+      <ul class="features">
+        <li>
+          <h3>Lernkarten</h3>
+          <p>
+            Jede Lernkarte erklärt einen kleinen Lernschritt – mit
+            <strong>1 Erklärung und 3 Beispielen</strong>. Wichtige Sprachmuster sind
+            fett markiert.
+          </p>
+          <img
+            src={withBase('/images/lernkarten-beispiel.png')}
+            alt="Beispiel einer learnAREAL-Lernkarte: Mit «I» sprichst du von dir selbst – drei Beispielsätze mit deutscher Übersetzung."
+            loading="lazy"
+          />
+        </li>
+        <li>
+          <h3>Lernposter</h3>
+          <p>
+            Grössere Themen starten mit einem Lernposter: zuerst der Überblick, dann
+            die einzelnen Lernkarten.
+          </p>
+          <img
+            src={withBase('/images/beispiel-lernposter.png')}
+            alt="Beispiel eines learnAREAL-Lernposters zum Thema Subjektpronomen."
+            loading="lazy"
+          />
+        </li>
+        <li>
+          <h3>Lerncoach-Tipps</h3>
+          <p>
+            Kurze Hinweise dort, wo typische Fragen oder Unsicherheiten entstehen –
+            wie ein Lerncoach, der dich durchs Heft begleitet.
+          </p>
+          <img
+            src={withBase('/images/beispiel-lerncoach.png')}
+            alt="Beispiel eines Lerncoach-Tipps aus dem learnAREAL-Arbeitsheft."
+            loading="lazy"
+          />
+        </li>
+        <li>
+          <h3>Zusatzmaterialien</h3>
+          <p>
+            QR-Codes im Heft führen direkt zu vertiefenden Übersichten und Tabellen
+            auf dieser Seite – immer über eine feste, dauerhafte Adresse.
+          </p>
+          <p class="tile-link">
+            <a href={withBase('/a1/heft-1/materialien/')}>Zu den Materialien von Heft 1 →</a>
+          </p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Die drei Grundgedanken -->
+    <section class="section">
+      <SectionHeading eyebrow="Die Idee">Die drei Grundgedanken von learnAREAL</SectionHeading>
+      <ol class="gedanken">
+        <li>
+          <svg viewBox="0 0 48 48" aria-hidden="true">
+            <circle cx="21" cy="21" r="12" fill="none" stroke="var(--blue)" stroke-width="3.5"></circle>
+            <line x1="30" y1="30" x2="41" y2="41" stroke="var(--blue)" stroke-width="3.5" stroke-linecap="round"></line>
+            <path d="M15 21 q6 -7 12 0" fill="none" stroke="var(--green)" stroke-width="3" stroke-linecap="round"></path>
+          </svg>
+          <h3><span>1</span> Erkennen</h3>
+          <p>
+            Statt langer Regelblöcke siehst du zuerst ein klares Sprachmuster.
+            Fett markierte Stellen zeigen dir sofort, worauf es ankommt.
+          </p>
+        </li>
+        <li>
+          <svg viewBox="0 0 48 48" aria-hidden="true">
+            <path d="M24 6 a12 12 0 0 1 12 12 c0 5 -3 8 -5 11 l-1 4 h-12 l-1 -4 c-2 -3 -5 -6 -5 -11 a12 12 0 0 1 12 -12 Z" fill="none" stroke="var(--blue)" stroke-width="3.2" stroke-linejoin="round"></path>
+            <line x1="19" y1="38" x2="29" y2="38" stroke="var(--green)" stroke-width="3" stroke-linecap="round"></line>
+            <line x1="21" y1="43" x2="27" y2="43" stroke="var(--green)" stroke-width="3" stroke-linecap="round"></line>
+          </svg>
+          <h3><span>2</span> Verstehen</h3>
+          <p>
+            Einfache Beispiele und der bewusste Vergleich zwischen Deutsch und
+            Englisch zeigen dir, warum Englisch manchmal anders funktioniert als
+            eine direkte Übersetzung.
+          </p>
+        </li>
+        <li>
+          <svg viewBox="0 0 48 48" aria-hidden="true">
+            <path d="M6 30 h10 v10 h-10 Z" fill="var(--green-soft)" stroke="var(--green)" stroke-width="2.5"></path>
+            <path d="M19 22 h10 v18 h-10 Z" fill="var(--green-soft)" stroke="var(--green)" stroke-width="2.5"></path>
+            <path d="M32 14 h10 v26 h-10 Z" fill="none" stroke="var(--blue)" stroke-width="2.5"></path>
+            <path d="M34 26 l3 3 l6 -7" fill="none" stroke="var(--blue)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+          <h3><span>3</span> Anwenden</h3>
+          <p>
+            Kleine, machbare Lernschritte bauen aufeinander auf. Jede Karte ist ein
+            kleines Erfolgserlebnis – und macht den nächsten Schritt leichter.
+          </p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- Der Lernweg -->
+    <section class="section">
+      <SectionHeading eyebrow="Der Lernweg">Das Sprachhaus</SectionHeading>
+      <p class="lead">
+        Sprache wird nicht auf einmal gelernt, sondern Ebene für Ebene aufgebaut –
+        die Niveaus A1 bis B2 orientieren sich am Gemeinsamen Europäischen
+        Referenzrahmen (GER).
+      </p>
+      <div class="split">
+        <div>
+          <p>
+            <strong>A1 bildet die Treppen zum Haus</strong> – hier entstehen die
+            ersten Grundlagen. Mit <strong>A2</strong> beginnt das Erdgeschoss,
+            darauf baut <strong>B1</strong> als weiterer Stock auf, und mit
+            <strong>B2</strong> wird das Sprachhaus mit dem Dachgeschoss
+            vervollständigt.
+          </p>
+          <p>
+            So siehst du jederzeit, wo du stehst, was du geschafft hast und welcher
+            Schritt als Nächstes kommt. Jedes Niveau besteht aus
+            <strong>8 Arbeitsheften</strong>, die aufeinander aufbauen.
+          </p>
+          <p class="cta-line">
+            <a href={withBase('/a1/')}>Englisch A1 – jetzt verfügbar →</a>
+          </p>
+        </div>
+        <Sprachhaus />
+      </div>
+    </section>
+
+    <!-- Video -->
+    <section class="section">
+      <SectionHeading eyebrow="Die Grundidee">Die Mini-Erfolgs-Strategie</SectionHeading>
+      <div class="split">
+        <div>
+          <p>
+            Lernen funktioniert oft besser, wenn grosse Themen in kleine,
+            nachvollziehbare Schritte aufgeteilt werden. Jede Lernkarte soll ein
+            kleines Erfolgserlebnis ermöglichen und den nächsten Schritt leichter
+            machen. Das Video erklärt die Grundidee hinter learnAREAL.
+          </p>
+          <div class="video">
+            <iframe
+              src={videoEmbedUrl}
+              title="Video: Die Mini-Erfolgs-Strategie hinter learnAREAL"
+              allow="autoplay; fullscreen"
+              loading="lazy"
+              allowfullscreen></iframe>
+          </div>
+        </div>
+        <img
+          class="figur"
+          src={withBase('/images/figur.png')}
+          alt="Der learnAREAL-Lerncoach: eine freundliche Figur mit Headset und aufgeschlagenem Buch."
+          loading="lazy"
+        />
+      </div>
+    </section>
+
+    <!-- Die Reihe -->
+    <section class="section">
+      <SectionHeading eyebrow="Die Reihe">Eine Reihe, die weiterwächst</SectionHeading>
+      <p>
+        Die Reihe startet mit Englisch auf Niveau A1, gegliedert in
+        <strong>8 Arbeitshefte</strong>. Jedes Heft ist ein eigener Lernschritt und
+        baut auf den vorherigen Inhalten auf. Mit A2 beginnt danach das nächste
+        Niveau, gefolgt von B1 und B2. Die Hefte sind digital und als gedruckte
+        Version verfügbar – für Erwachsene, Wiedereinsteiger und Selbstlerner, die
+        Englisch eigenständig und in klaren Schritten lernen möchten.
+      </p>
+      <p>
+        <Button href={withBase('/a1/heft-1/')}>Zu Englisch A1 · Heft 1</Button>
+      </p>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .hero-grid {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+  }
+
+  .hero-grid > div {
+    flex: 1 1 26rem;
+  }
+
+  .hero-img {
+    max-width: min(420px, 100%);
+    height: auto;
+    border-radius: var(--radius);
+  }
+
+  .merkzeile {
+    font-weight: 700;
+    color: var(--navy);
+  }
+
+  .features {
+    display: grid;
+    gap: 1.25rem;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    margin: 1.5rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .features li {
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 1.4rem;
+  }
+
+  .features p {
+    margin: 0 0 1rem;
+    color: var(--muted);
+    font-size: 0.98rem;
+  }
+
+  .features img {
+    margin-top: auto;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+
+  .tile-link {
+    margin-top: auto;
+    font-weight: 600;
+  }
+
+  .gedanken {
+    display: grid;
+    gap: 1.25rem;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    margin: 1.5rem 0 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: gedanke;
+  }
+
+  .gedanken li {
+    background: linear-gradient(180deg, var(--surface) 0%, var(--bg) 100%);
+    border: 1px solid var(--border);
+    border-top: 4px solid var(--green);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 1.5rem 1.4rem;
+  }
+
+  .gedanken svg {
+    width: 44px;
+    height: 44px;
+    margin-bottom: 0.75rem;
+  }
+
+  .gedanken h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+  }
+
+  .gedanken h3 span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 50%;
+    background: var(--blue);
+    color: #fff;
+    font-size: 0.9rem;
+  }
+
+  .gedanken p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.98rem;
+  }
+
+  .split {
+    display: flex;
+    gap: 2.5rem;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .split > div {
+    flex: 1 1 24rem;
+  }
+
+  .split img.figur {
+    max-width: 240px;
+    height: auto;
+  }
+
+  .video {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--blue-soft);
+  }
+
+  .video iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  .cta-line {
+    font-weight: 600;
+  }
+</style>

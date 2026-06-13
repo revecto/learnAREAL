@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import Button from '../../../components/Button.astro';
+import { withBase } from '../../../utils/withBase.js';
+
+// TODO vor Livegang: echte Amazon-Produkt-URL eintragen
+const amazonUrl = 'https://www.amazon.de/dp/PLATZHALTER';
+---
+
+<BaseLayout
+  title="Englisch A1 · Heft 1"
+  description="Zusatzmaterialien zum learnAREAL-Arbeitsheft Englisch A1 · Heft 1 von 8."
+>
+  <main class="container">
+    <Breadcrumb
+      items={[
+        { label: 'A1', href: withBase('/a1/') },
+        { label: 'Heft 1' },
+      ]}
+    />
+
+    <h1>Englisch A1 · Heft 1 von 8</h1>
+    <p class="lead">Zusatzmaterialien zum Arbeitsheft</p>
+    <p>
+      Heft 1 legt das Fundament: Subjektpronomen, to be, Artikel, Zahlen und die ersten
+      Fragen. Zu ausgewählten Themen gibt es hier vertiefende Übersichten und Tabellen
+      als Zusatzmaterial.
+    </p>
+    <p class="actions">
+      <Button href={withBase('/a1/heft-1/materialien/')}>Zur Materialübersicht</Button>
+      <Button href={amazonUrl} variant="secondary">Heft auf Amazon ansehen</Button>
+    </p>
+
+    <p class="note">
+      Die Materialien ergänzen das Heft und können über die QR-Codes im Heft direkt
+      aufgerufen werden.
+    </p>
+  </main>
+</BaseLayout>
+
+<style>
+  .actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+</style>

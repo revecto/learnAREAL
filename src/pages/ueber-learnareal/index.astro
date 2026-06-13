@@ -1,0 +1,20 @@
+---
+// «Über learnAREAL» ist in die Startseite integriert.
+// Diese Seite leitet nur noch weiter, damit alte Links nicht brechen.
+import { withBase } from '../../utils/withBase.js';
+
+const target = withBase('/');
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="refresh" content={`0; url=${target}`} />
+    <link rel="canonical" href={target} />
+    <title>learnAREAL</title>
+  </head>
+  <body>
+    <p>Diese Seite ist umgezogen: <a href={target}>zur Startseite</a></p>
+  </body>
+</html>

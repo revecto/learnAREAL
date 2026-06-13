@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../../../components/Breadcrumb.astro';
+import MaterialCard from '../../../../components/MaterialCard.astro';
+import { withBase } from '../../../../utils/withBase.js';
+import { getMaterials } from '../../../../data/materials.js';
+
+const items = getMaterials('A1', 1);
+---
+
+<BaseLayout
+  title="Heft 1 · Zusatzmaterialien"
+  description="Alle Zusatzmaterialien zu Englisch A1 · Heft 1: Übersichten und Tabellen zu Subjektpronomen, to be, Possessivartikeln, Zahlen, Fragen und mehr."
+>
+  <main class="container">
+    <Breadcrumb
+      items={[
+        { label: 'A1', href: withBase('/a1/') },
+        { label: 'Heft 1', href: withBase('/a1/heft-1/') },
+        { label: 'Zusatzmaterialien' },
+      ]}
+    />
+
+    <h1>Heft 1 · Zusatzmaterialien</h1>
+    <p class="lead">Hier findest du alle Zusatzmaterialien zu Englisch A1 · Heft 1.</p>
+
+    <ul class="grid">
+      {items.map((material) => <MaterialCard material={material} />)}
+    </ul>
+  </main>
+</BaseLayout>

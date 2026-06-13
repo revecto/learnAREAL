@@ -1,0 +1,44 @@
+---
+// Das Sprachhaus: A1 = Treppen zum Haus, A2 = Erdgeschoss,
+// B1 = 1. Stock, B2 = Dachgeschoss. Level-Farben als Niveau-Kennung.
+---
+
+<svg
+  class="haus"
+  viewBox="0 0 360 270"
+  xmlns="http://www.w3.org/2000/svg"
+  role="img"
+  aria-label="Das Sprachhaus: A1 bildet die Treppen zum Haus, A2 das Erdgeschoss, B1 den ersten Stock, B2 das Dachgeschoss"
+>
+  <!-- Dach: B2 -->
+  <polygon points="230,18 120,70 340,70" fill="var(--b2)" opacity="0.92"></polygon>
+  <text x="230" y="62" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">B2 · Dach</text>
+
+  <!-- 1. Stock: B1 -->
+  <rect x="120" y="74" width="220" height="56" rx="3" fill="var(--b1)" opacity="0.92"></rect>
+  <text x="230" y="108" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">B1 · 1. Stock</text>
+
+  <!-- Erdgeschoss: A2 -->
+  <rect x="120" y="134" width="220" height="56" rx="3" fill="var(--a2)" opacity="0.95"></rect>
+  <text x="230" y="168" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">A2 · Erdgeschoss</text>
+
+  <!-- Treppen: A1 -->
+  <g fill="var(--a1)">
+    <rect x="10" y="226" width="110" height="22" rx="2"></rect>
+    <rect x="46" y="208" width="74" height="16" rx="2" opacity="0.9"></rect>
+    <rect x="82" y="190" width="38" height="16" rx="2" opacity="0.8"></rect>
+  </g>
+  <text x="62" y="242" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">A1 · Treppen</text>
+
+  <!-- Bodenlinie -->
+  <line x1="10" y1="248" x2="350" y2="248" stroke="var(--border)" stroke-width="2"></line>
+  <text x="180" y="266" text-anchor="middle" fill="var(--muted)" font-size="11.5">8 Arbeitshefte pro Niveau · Ebene für Ebene</text>
+</svg>
+
+<style>
+  .haus {
+    display: block;
+    max-width: 360px;
+    margin: 1.5rem 0 0;
+  }
+</style>

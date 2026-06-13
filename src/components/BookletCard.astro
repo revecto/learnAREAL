@@ -1,0 +1,54 @@
+---
+import { withBase } from '../utils/withBase.js';
+
+// number: Heftnummer · title: optionaler Untertitel · available: boolean
+const { number, title = '', available = false, level = 'a1' } = Astro.props;
+
+const href = available ? withBase(`/${level}/heft-${number}/`) : null;
+---
+
+<li class={`card ${available ? '' : 'card--soon'}`}>
+  <p class="number">Heft {number}</p>
+  {title && <h3>{title}</h3>}
+  {
+    available ? (
+      <a class="link" href={href}>
+        Zum Heft →
+      </a>
+    ) : (
+      <span class="badge badge--pending">erscheint demnächst</span>
+    )
+  }
+</li>
+
+<style>
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 1.3rem 1.4rem;
+  }
+
+  .card--soon {
+    opacity: 0.75;
+  }
+
+  .number {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--blue);
+    margin: 0 0 0.3rem;
+  }
+
+  h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.05rem;
+  }
+
+  .link {
+    font-weight: 600;
+  }
+</style>

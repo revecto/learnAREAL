@@ -1,0 +1,76 @@
+---
+import { withBase } from '../utils/withBase.js';
+import Button from './Button.astro';
+
+// material: Eintrag aus src/data/materials.js
+const { material } = Astro.props;
+
+const detailUrl = withBase(
+  `/${material.level.toLowerCase()}/heft-${material.booklet}/materialien/${material.slug}/`
+);
+const available = material.status === 'verfügbar';
+---
+
+<li class="card">
+  <div class="meta">
+    <span class="badge badge--type">{material.type}</span>
+    <span class="badge badge--kind">{material.kind}</span>
+    <span class={`badge ${available ? 'badge--available' : 'badge--pending'}`}>
+      {material.status}
+    </span>
+  </div>
+  <h3><a href={detailUrl}>{material.title}</a></h3>
+  <p class="block">{material.block}</p>
+  <p class="desc">{material.description}</p>
+  <div class="action">
+    <Button href={detailUrl} variant="secondary">Material öffnen</Button>
+  </div>
+</li>
+
+<style>
+  .card {
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 1.4rem 1.4rem 1.5rem;
+  }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 0.8rem;
+  }
+
+  h3 {
+    margin: 0 0 0.25rem;
+  }
+
+  h3 a {
+    color: var(--text);
+  }
+
+  h3 a:hover {
+    color: var(--blue);
+    text-decoration: none;
+  }
+
+  .block {
+    font-size: 0.88rem;
+    color: var(--muted);
+    margin: 0 0 0.6rem;
+  }
+
+  .desc {
+    font-size: 0.96rem;
+    color: var(--muted);
+    margin: 0 0 1.1rem;
+  }
+
+  .action {
+    margin-top: auto;
+  }
+</style>
