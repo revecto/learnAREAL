@@ -4,13 +4,16 @@ import Breadcrumb from '../../../components/Breadcrumb.astro';
 import Button from '../../../components/Button.astro';
 import { withBase } from '../../../utils/withBase.js';
 
-// TODO vor Livegang: echte Amazon-Produkt-URL eintragen
+// TODO vor Livegang: echte Amazon-Produkt-URL eintragen.
+// Solange der Platzhalter steht, wird der Amazon-Button NICHT angezeigt
+// (kein toter Link auf der Live-Seite).
 const amazonUrl = 'https://www.amazon.de/dp/PLATZHALTER';
+const showAmazon = !amazonUrl.includes('PLATZHALTER');
 ---
 
 <BaseLayout
   title="Englisch A1 · Heft 1"
-  description="Zusatzmaterialien zum learnAREAL-Arbeitsheft Englisch A1 · Heft 1 von 8."
+  description="Zusatzmaterialien zum learnAREAL-Heft Englisch A1 · Heft 1 von 8."
 >
   <main class="container">
     <Breadcrumb
@@ -21,20 +24,34 @@ const amazonUrl = 'https://www.amazon.de/dp/PLATZHALTER';
     />
 
     <h1>Englisch A1 · Heft 1 von 8</h1>
-    <p class="lead">Zusatzmaterialien zum Arbeitsheft</p>
+    <p class="lead">Zusatzmaterialien zum Heft</p>
     <p>
-      Heft 1 legt das Fundament: Subjektpronomen, to be, Artikel, Zahlen und die ersten
-      Fragen. Zu ausgewählten Themen gibt es hier vertiefende Übersichten und Tabellen
-      als Zusatzmaterial.
+      Heft 1 ist dein Einstieg in Englisch A1. Du fängst ganz am Anfang an und legst
+      Schritt für Schritt die Grundlagen, mit denen du einfache englische Sätze
+      verstehst und selbst bildest.
+    </p>
+    <p>
+      Du lernst, über dich und andere zu sprechen (I, you, he, she …) und die wichtigsten
+      Formen von «to be» (am, is, are). Du erfährst, wann es a oder an heisst, wofür the
+      steht und wie du ausdrückst, wem etwas gehört (my, your, his …). Dazu kommen die
+      Zahlen, der Unterschied zwischen Einzahl und Mehrzahl sowie kleine, aber wichtige
+      Wörter wie this, that, these und those.
+    </p>
+    <p>
+      Zum Schluss baust du deine ersten ganzen Sätze und Fragen: Wie ist ein englischer
+      Satz aufgebaut, wie fragst du mit what, where oder how, und wie gibst du kurze,
+      richtige Antworten? So hast du am Ende von Heft 1 ein sicheres Fundament für die
+      nächsten Hefte.
+    </p>
+    <p>
+      Zu vielen dieser Themen findest du hier vertiefende Übersichten und Tabellen als
+      Zusatzmaterial.
     </p>
     <p class="actions">
       <Button href={withBase('/a1/heft-1/materialien/')}>Zur Materialübersicht</Button>
-      <Button href={amazonUrl} variant="secondary">Heft auf Amazon ansehen</Button>
-    </p>
-
-    <p class="note">
-      Die Materialien ergänzen das Heft und können über die QR-Codes im Heft direkt
-      aufgerufen werden.
+      {showAmazon && (
+        <Button href={amazonUrl} variant="secondary">Heft auf Amazon ansehen</Button>
+      )}
     </p>
   </main>
 </BaseLayout>

@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { withBase } from '../utils/withBase.js';
+---
+
+<BaseLayout
+  title="Seite nicht gefunden"
+  description="Diese Seite wurde nicht gefunden. Hier geht es zurück zu den learnAREAL-Materialien."
+>
+  <main class="container">
+    <section class="notfound">
+      <p class="code">404</p>
+      <h1>Diese Seite gibt es nicht (mehr)</h1>
+      <p class="lead">
+        Der Link oder QR-Code führt ins Leere – vielleicht ein Tippfehler, oder die Seite
+        wurde verschoben. Über die folgenden Links findest du schnell weiter:
+      </p>
+      <ul class="links">
+        <li><a href={withBase('/a1/heft-1/materialien/')}>Alle Zusatzmaterialien zu Heft 1</a></li>
+        <li><a href={withBase('/a1/')}>Übersicht Englisch A1</a></li>
+        <li><a href={withBase('/')}>Zur Startseite</a></li>
+      </ul>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .notfound {
+    max-width: 36rem;
+    padding: 1.5rem 0 2rem;
+  }
+
+  .code {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--blue);
+    margin: 0 0 0.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  .links {
+    list-style: none;
+    margin: 1.25rem 0 0;
+    padding: 0;
+  }
+
+  .links li {
+    padding: 0.7rem 0;
+    border-bottom: 1px solid var(--border);
+    font-weight: 600;
+  }
+</style>

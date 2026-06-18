@@ -21,17 +21,59 @@ const booklets = [
   description="Englisch A1 mit learnAREAL: 8 Arbeitshefte vom ersten Wort bis zum A1-Abschluss. Heft 1 ist verfügbar."
 >
   <main class="container">
-    <h1>Englisch A1</h1>
-    <p class="lead">
-      Das Niveau A1 besteht aus 8 Arbeitsheften. Jedes Heft baut auf dem vorherigen auf.
-      Heft 1 ist verfügbar – die Hefte 2 bis 8 erscheinen demnächst.
-    </p>
-    <p>
-      <Button href={withBase('/a1/heft-1/')}>Zu Heft 1</Button>
-    </p>
+    <div class="a1-intro">
+      <div>
+        <h1>Englisch A1</h1>
+        <p class="lead">
+          Hier findest du die Übersicht aller Hefte des Niveaus A1. Insgesamt besteht
+          Niveau A1 aus 8 Heften, wobei jedes Heft auf dem vorherigen aufbaut. Das
+          Zusatzmaterial für Heft 1 ist verfügbar, Hefte 2 bis 8 erscheinen demnächst.
+        </p>
+        <p>
+          <Button href={withBase('/a1/heft-1/')}>Zu Heft 1</Button>
+        </p>
+      </div>
+      <img
+        class="ger-badge"
+        src={withBase('/images/ger-a1.png')}
+        alt="A1 – orientiert am Gemeinsamen Europäischen Referenzrahmen (GER)"
+        loading="lazy"
+      />
+    </div>
 
     <ul class="grid">
       {booklets.map((b) => <BookletCard number={b.number} available={b.available} />)}
     </ul>
   </main>
 </BaseLayout>
+
+<style>
+  .a1-intro {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 1.75rem;
+  }
+
+  .a1-intro > div {
+    flex: 1 1 22rem;
+  }
+
+  .ger-badge {
+    width: 150px;
+    height: auto;
+    flex: 0 0 auto;
+  }
+
+  .grid {
+    margin-bottom: 3rem;
+  }
+
+  @media (max-width: 560px) {
+    .a1-intro {
+      justify-content: center;
+    }
+  }
+</style>

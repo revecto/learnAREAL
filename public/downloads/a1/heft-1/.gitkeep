@@ -1,0 +1,3 @@
+# Hier die fertigen PDFs ablegen.
+# Dateinamen müssen den fileUrl-Einträgen in src/data/materials.js entsprechen,
+# z. B. to-be-alle-formen.pdf

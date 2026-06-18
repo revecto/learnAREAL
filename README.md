@@ -40,8 +40,19 @@ npm run preview # Build lokal ansehen
 1. PDF in `public/downloads/a1/heft-1/` legen. Der Dateiname muss dem
    `fileUrl`-Eintrag in `src/data/materials.js` entsprechen
    (z. B. `to-be-alle-formen.pdf`).
-2. Im selben Eintrag `status` von `"in Arbeit"` auf `"verfügbar"` setzen.
-3. Committen und pushen – der Download-Button erscheint automatisch.
+2. **Vorschaubild erzeugen** (zeigt das Material auf Übersicht und Einzelseite).
+   Aus dem PDF die erste Seite als PNG nach `public/images/thumbs/<slug>.png`
+   exportieren, z. B. mit Poppler:
+
+   ```bash
+   pdftoppm -png -f 1 -l 1 -scale-to-x 640 -scale-to-y -1 \
+     public/downloads/a1/heft-1/<slug>.pdf public/images/thumbs/<slug>
+   # erzeugt <slug>-1.png → in <slug>.png umbenennen
+   ```
+
+   Fehlt das Bild, bleibt die Seite funktionsfähig, zeigt aber kein Vorschaubild.
+3. Im selben Eintrag `status` von `"in Arbeit"` auf `"verfügbar"` setzen.
+4. Committen und pushen – Vorschaubild und Download-Button erscheinen automatisch.
 
 ## Neues Heft ergänzen (später)
 

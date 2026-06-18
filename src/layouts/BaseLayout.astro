@@ -8,6 +8,14 @@ const { title, description = 'Digitale Begleitseite zu den learnAREAL-Arbeitshef
   Astro.props;
 
 const pageTitle = title ? `${title} · learnAREAL` : 'learnAREAL';
+
+// Kanonische URL und Social-Vorschaubild (absolut, für Open Graph / Link-Vorschauen)
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const ogImage = new URL(withBase('/images/hero-banner.jpg'), Astro.site).href;
+
+// Cloudflare Web Analytics (cookielos): Token hier eintragen, sobald vorhanden.
+// Solange leer, wird kein Analyse-Script geladen – die Seite bleibt analysefrei.
+const cfToken = 'd605969953864c11ac6356e665e61d27';
 ---
 
 <!doctype html>
@@ -16,8 +24,31 @@ const pageTitle = title ? `${title} · learnAREAL` : 'learnAREAL';
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href={withBase('/favicon.svg')} />
     <title>{pageTitle}</title>
+
+    <!-- Social-Vorschau (Open Graph / Twitter) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="learnAREAL" />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    {
+      cfToken && (
+        <script
+          defer
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon={`{"token": "${cfToken}"}`}
+        />
+      )
+    }
   </head>
   <body>
     <Header />
